@@ -8,14 +8,11 @@ import getFileContent from '@salesforce/apex/FileController.getFileContent';
 export default class FilePreview extends NavigationMixin(LightningElement) {
     @api recordId;
     @track files = [];
-    @track imageFiles = [];
     @track excelFiles = [];
     @track pdfFiles = [];
     @track showModal = false;
     @track modalTitle = '';
     @track pdfUrl = '';
-    @track showImageModal = false;
-    @track imageUrl = '';
     sheetJSLoaded = false;
     workbook = null;
 
@@ -34,8 +31,6 @@ export default class FilePreview extends NavigationMixin(LightningElement) {
     wiredFiles({ error, data }) {
         if (data) {
             this.files = data;
-            this.imageFiles = data.filter(file => file.FileExtension && 
-                !['xlsx', 'xls', 'pdf' , 'csv'].includes(file.FileExtension.toLowerCase()));
             this.excelFiles = data.filter(file => file.FileExtension && 
                 ['xlsx', 'xls', 'csv'].includes(file.FileExtension.toLowerCase()));
             this.pdfFiles = data.filter(file => file.FileExtension && 
@@ -78,16 +73,6 @@ export default class FilePreview extends NavigationMixin(LightningElement) {
             .catch(error => {
                 console.error('Error fetching file content: ', error);
             });
-    }
-
-    handleImagePreview(event) {
-        const fileId = event.target.dataset.id;
-        const file = this.imageFiles.find(file => file.Id === fileId);
-        if (file) {
-            this.imageUrl = `/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&versionId=${file.Id}&operationContext=CHATTER&contentId=${file.ContentDocumentId}`;
-            this.modalTitle = file.Title;
-            this.showImageModal = true;
-        }
     }
 
     closeModal() {

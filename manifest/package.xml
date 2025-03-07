@@ -5,7 +5,9 @@
 		<name>ApexClass</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>excelPreviewModal</members>
+		<members>filePreview</members>
+		<members>pdfPreviewModal</members>
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
