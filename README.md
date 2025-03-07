@@ -1,18 +1,26 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Custom File Preview LWC component for Excel and PDF files
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Custom LWC component to overcome salesforce limitation on viewing EXCEL and PDF files.
 
-## How Do You Plan to Deploy Your Changes?
+Works on any Object. 
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+*Dependency -- SheetJS external library(Static resource)
 
-## Configure Your Salesforce DX Project
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+![image](https://github.com/user-attachments/assets/89516e6a-6898-4a6f-b47f-7ca4a70a57e2)
 
-## Read All About It
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## This component convert sheet data to html and render it in separate modal for easy viewing.
+- Supports .xlsx, .xls, .csv filetypes
+- Supports multiple sheets on single workbook or csv file
+- easy to visualize and analyze sheet data in Salesforce
+
+![image](https://github.com/user-attachments/assets/eba868d5-594d-4e66-b21b-7e93940fe6e2)
+
+-----
+
+## This component opens PDF file in iframe modal
+- Very useful opening password protected PDF files
+- Opens Encrypted Files
+
+![image](https://github.com/user-attachments/assets/1c75551c-2f5c-451a-a21f-50b148eee109)
