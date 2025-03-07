@@ -1,0 +1,143 @@
+<template>
+    <lightning-card title="File Preview" icon-name="custom:custom63">
+        <!-- Images Section -->
+        <!--
+        <h2 class="section-header">Documents & Images</h2>
+        <template if:true={imageFiles.length}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="file-name-column">
+                            <div class="slds-truncate" title="File Name">FILE NAME</div>
+                        </th>
+                        <th scope="col" class="file-type-column">
+                            <div class="slds-truncate" title="File Type">FILE TYPE</div>
+                        </th>
+                        <th scope="col" class="action-column">
+                            <div class="slds-truncate" title="Action">ACTION</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={imageFiles} for:item="file">
+                        <tr key={file.Id} class="slds-hint-parent">
+                            <td data-label="File Name" class="file-name-column">
+                                <div class="slds-truncate" title={file.Title}>{file.Title}</div>
+                            </td>
+                            <td data-label="File Type" class="file-type-column">
+                                <div class="slds-truncate" title={file.FileExtension}>{file.FileExtension}</div>
+                            </td>
+                            <td data-label="Action" class="action-column">
+                                <lightning-button variant="brand" label="Preview" title="Preview"
+                                    onclick={handleImagePreview} data-id={file.Id}></lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:false={imageFiles.length}>
+            <p>No image files found.</p>
+        </template>
+    -->
+
+        <!-- Excel Section -->
+        <h2 class="section-header">Excel Files</h2>
+        <template if:true={excelFiles.length}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="file-name-column">
+                            <div class="slds-truncate" title="File Name">FILE NAME</div>
+                        </th>
+                        <th scope="col" class="file-type-column">
+                            <div class="slds-truncate" title="File Type">FILE TYPE</div>
+                        </th>
+                        <th scope="col" class="action-column">
+                            <div class="slds-truncate" title="Action">ACTION</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={excelFiles} for:item="file">
+                        <tr key={file.Id} class="slds-hint-parent">
+                            <td data-label="File Name" class="file-name-column">
+                                <div class="slds-truncate" title={file.Title}>{file.Title}</div>
+                            </td>
+                            <td data-label="File Type" class="file-type-column">
+                                <div class="slds-truncate" title={file.FileExtension}>{file.FileExtension}</div>
+                            </td>
+                            <td data-label="Action" class="action-column">
+                                <lightning-button variant="brand" label="Preview" title="Preview"
+                                    onclick={handleFilePreview} data-id={file.Id} data-extension={file.FileExtension}></lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:false={excelFiles.length}>
+            <p>No Excel files found.</p>
+        </template>
+
+        <!-- PDF Section -->
+        <h2 class="section-header">PDF Files</h2>
+        <template if:true={pdfFiles.length}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="file-name-column">
+                            <div class="slds-truncate" title="File Name">FILE NAME</div>
+                        </th>
+                        <th scope="col" class="file-type-column">
+                            <div class="slds-truncate" title="File Type">FILE TYPE</div>
+                        </th>
+                        <th scope="col" class="action-column">
+                            <div class="slds-truncate" title="Action">ACTION</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={pdfFiles} for:item="file">
+                        <tr key={file.Id} class="slds-hint-parent">
+                            <td data-label="File Name" class="file-name-column">
+                                <div class="slds-truncate" title={file.Title}>{file.Title}</div>
+                            </td>
+                            <td data-label="File Type" class="file-type-column">
+                                <div class="slds-truncate" title={file.FileExtension}>{file.FileExtension}</div>
+                            </td>
+                            <td data-label="Action" class="action-column">
+                                <lightning-button variant="brand" label="Preview" title="Preview"
+                                    onclick={handleFilePreview} data-id={file.Id} data-extension={file.FileExtension}></lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:false={pdfFiles.length}>
+            <p>No PDF files found.</p>
+        </template>
+    </lightning-card>
+
+    <!-- Include the modal for previewing Excel files -->
+    <c-excel-preview-modal></c-excel-preview-modal>
+
+    <!-- Include the modal for previewing PDF files -->
+    <template if:true={showModal}>
+        <c-pdf-preview-modal
+            modal-title={modalTitle}
+            pdf-url={pdfUrl}
+            onclose={closeModal}
+        ></c-pdf-preview-modal>
+    </template>
+
+    <!-- Include the modal for previewing Image files -->
+    <template if:true={showImageModal}>
+        <c-image-preview-modal
+            image-title={modalTitle}
+            image-url={imageUrl}
+            onclose={closeImageModal}
+        ></c-image-preview-modal>
+    </template>
+</template>

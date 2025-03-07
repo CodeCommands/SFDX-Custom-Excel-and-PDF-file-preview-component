@@ -1,0 +1,34 @@
+.section-header {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.file-name-column {
+    width: 30%;
+    text-align: left; /* Left align text */
+    padding-left: 1rem; /* Optional: add some padding for better spacing */
+}
+
+.file-type-column, .action-column {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.file-type-column {
+    width: 20%;
+}
+
+.action-column {
+    width: 20%;
+}
+
+.slds-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.slds-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

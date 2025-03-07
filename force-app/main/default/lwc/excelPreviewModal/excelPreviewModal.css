@@ -1,0 +1,10 @@
+.sheets-header {
+    font-weight: bold;
+}
+
+.separator-line {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
